@@ -99,7 +99,10 @@ ol.unstyled {
 img{
 	z-index: 0;
 }
-
+.addlandingpage{
+	margin-left: 0;
+	margin-top: 8px;
+}
 .subpage{
 	background: url(../img/content-blank.jpg) no-repeat white;
 }

@@ -37,6 +37,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 .sf-menu li:hover {
 	visibility:		inherit; /* fixes IE7 'sticky bug' */
+color: red;
 }
 .sf-menu li {
 	float:			left;
@@ -69,6 +70,7 @@ background: -ms-linear-gradient(top,  #92dadf 0%,#02b9c7 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #92dadf 0%,#02b9c7 100%); /* W3C */
 /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92dadf', endColorstr='#02b9c7',GradientType=0 ); /* IE6-8 */
 	
+color: white;
 }
 
 .sf-menu li:hover ul,
@@ -141,6 +143,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92dadf', end
 
 
 
+color: white;
 }
 .sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
 	
