@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Create beautiful slideshows with jQuery Cycle - Backslash</title>
+
+<link href="css/demo.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<!-- required for this demo -->
+<!-- <link rel="stylesheet" href="css/slideshows.css" /> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+
+<script src="js/jquery.easing.1.3.js"></script>
+<style>
+/* slideshow 2 */
+	
+.ss2_wrapper { position:relative; width:360px; height:268px; margin:0 0 20px 0; overflow:hidden; }
+.ss2_wrapper .slideshow { position:relative; width:360px; height:268px; }
+	
+	.ss2_wrapper .slideshow_item { width:360px; height:268px; }
+	.ss2_wrapper .slideshow_item .data { display:none; }	
+	
+	.ss2_wrapper a.slideshow_prev { position:absolute; left:-40px; top:160px; z-index:10; width:40px; height:46px; outline:none; background:url(trans-black-70.png); -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; -moz-box-shadow: 0 0 2px #222; -webkit-box-shadow: 0 0 2px #222; box-shadow: 0 0 2px #222;  }
+		.ss2_wrapper a.slideshow_prev:hover { background:#000; }
+		.ss2_wrapper a.slideshow_prev span { display:block; width:40px; height:46px; background:url(arrows.png) no-repeat -55px 50%; text-indent:-9999px; }
+		
+	.ss2_wrapper a.slideshow_next { position:absolute; right:-40px; top:160px; z-index:10; width:40px; height:46px; outline:none; background:url(trans-black-70.png); -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; -moz-box-shadow: 0 0 2px #222; -webkit-box-shadow: 0 0 2px #222; box-shadow: 0 0 2px #222;  }
+		.ss2_wrapper a.slideshow_next:hover { background:#000; }
+		.ss2_wrapper a.slideshow_next span { display:block; width:40px; height:46px; background:url(arrows.png) no-repeat -5px 50%; text-indent:-9999px; }
+	
+	.ss2_wrapper .slideshow_paging { position:absolute; top:10px; right:10px; z-index:11; font-size:12px; padding:3px 2px; background:url(trans-black-70.png); -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; -moz-box-shadow: 0 0 2px #222; -webkit-box-shadow: 0 0 2px #222; box-shadow: 0 0 2px #222; }
+		.ss2_wrapper .slideshow_paging a { display:block; float:left; margin:0 1px; padding:3px 7px; color:#ccc; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
+			.ss2_wrapper .slideshow_paging a:hover { color:#fff }
+			.ss2_wrapper .slideshow_paging a.activeSlide { background:#eee; color:#222 }
+</style>
+<script>
+$(function() {
+	
+
+// ---------------------------------------------------
+// Slideshow 2
+
+    $('#slideshow_2').cycle({
+        fx: 'fade',		
+		speed:  900, 
+		timeout: 5000, 
+		pager: '.ss2_wrapper .slideshow_paging', 
+        prev: '.ss2_wrapper .slideshow_prev',
+        next: '.ss2_wrapper .slideshow_next',
+		before: function(currSlideElement, nextSlideElement) {
+			var data = $('.data', $(nextSlideElement)).html();
+			$('.ss2_wrapper .slideshow_box').stop(true, true).animate({ bottom:'-110px'}, 400, function(){
+				$('.ss2_wrapper .slideshow_box .data').html(data);
+			});
+			$('.ss2_wrapper .slideshow_box').delay(100).animate({ bottom:'0'}, 400);
+		}
+    });
+
+	$('.ss2_wrapper').mouseenter(function(){
+		$('#slideshow_2').cycle('pause');
+		$('.ss2_wrapper .slideshow_prev').stop(true, true).animate({ left:'20px'}, 200);
+		$('.ss2_wrapper .slideshow_next').stop(true, true).animate({ right:'20px'}, 200);
+    }).mouseleave(function(){
+		$('#slideshow_2').cycle('resume');
+		$('.ss2_wrapper .slideshow_prev').stop(true, true).animate({ left:'-40px'}, 200);
+		$('.ss2_wrapper .slideshow_next').stop(true, true).animate({ right:'-40px'}, 200);
+    });
+	
+	
+	
+// ---------------------------------------------------
+
+
+	
+	$('a[href="#"]').click(function(event){ 
+		event.preventDefault(); // for this demo disable all links that point to "#"
+	});
+	
+});
+</script>
+
+
+</head>
+<body>
+<div id="wrapper">
+
+<section id="main">
+
+	<div id="content">
+	
+		<h1>Create beautiful slideshows with jQuery Cycle</h1>
+		<p>by <a href="http://www.backslash.gr/">Nikos Tsaganos</a></p>
+		<p>for more demos like this visit <a href="http://www.backslash.gr/">Backslash.gr</a></p>
+
+	
+		
+		<h2>Slideshow #2</h2>
+		
+		<div class="ss2_wrapper">
+		
+			<a href="#" class="slideshow_prev"><span>Previous</span></a>
+			<a href="#" class="slideshow_next"><span>Next</span></a>
+				
+			<!-- <div class="slideshow_paging"></div> -->
+			
+			<div class="slideshow_box">
+
+				<div class="data"></div>
+			</div>
+			
+			<div id="slideshow_2" class="slideshow">
+				
+				
+					<div class="image"><a href="#"><img src="photos/2.jpg" alt="photo 2" width="360" height="268" /></a></div>
+					
+				
+					<div class="image"><a href="#"><img src="photos/3.jpg" alt="photo 3" width="360" height="268" /></a></div>
+				
+				
+					<div class="image"><a href="#"><img src="photos/1.jpg" alt="photo 1" width="360" height="268" /></a></div>
+					
+				
+					<div class="image"><a href="#"><img src="photos/4.jpg" alt="photo 4" width="360" height="268" /></a></div>
+								
+			</div>
+
+		</div><!-- .ss2_wrapper -->
+		
+		<div class="ss3_wrapper">
+		
+			<a href="#" class="slideshow_prev"><span>Previous</span></a>
+			<a href="#" class="slideshow_next"><span>Next</span></a>
+				
+			<!-- <div class="slideshow_paging"></div> -->
+			
+			<div class="slideshow_box">
+
+				<div class="data"></div>
+			</div>
+			
+			<div id="slideshow_3" class="slideshow">
+				
+				
+					<div class="image"><a href="#"><img src="photos/2.jpg" alt="photo 2" width="360" height="268" /></a></div>
+					
+				
+					<div class="image"><a href="#"><img src="photos/3.jpg" alt="photo 3" width="360" height="268" /></a></div>
+				
+				
+					<div class="image"><a href="#"><img src="photos/1.jpg" alt="photo 1" width="360" height="268" /></a></div>
+					
+				
+					<div class="image"><a href="#"><img src="photos/4.jpg" alt="photo 4" width="360" height="268" /></a></div>
+								
+			</div>
+
+		</div><!-- .ss2_wrapper -->
+		
+		
+		
+			
+	</div>
+	
+</section><!-- #main -->
+
+<footer>
+	<p>Copyright © 2011 Backslash • Created by <a href="http://www.backslash.gr">Nikos Tsaganos</a></p>
+</footer>
+</div><!-- #wrapper -->
+</body>
+</html>
