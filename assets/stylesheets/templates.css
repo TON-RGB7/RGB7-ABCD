@@ -11,7 +11,6 @@ a:hover { color: white; }
 a:focus { color: black; }
 
 p a, p a:visited { line-height: inherit;
-color: white;
 }
 
 
